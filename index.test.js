@@ -8,10 +8,10 @@ async function run (input, output, opts) {
   expect(result.warnings()).toHaveLength(0)
 }
 
-/* Write tests here
-
 it('does something', async () => {
-  await run('a{ }', 'a{ }', { })
+  await run(
+    'a{ height: 10vh; color: #FF10GG; }',
+    'a{ height: 10vh; color: #FF10GG; height: calc(var(--vh, 1vh) * 10); }',
+    { }
+  )
 })
-
-*/

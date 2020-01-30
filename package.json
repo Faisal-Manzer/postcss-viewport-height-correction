@@ -1,6 +1,6 @@
 {
   "name": "postcss-viewport-height-correction",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PostCSS plugin to correct viewport height value `vh` to real viewport height as stated by CSS Tricks in article https://css-tricks.com/the-trick-to-viewport-units-on-mobile/",
   "keywords": [
     "postcss",
@@ -34,9 +34,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^12.1.0",
     "jest": "^24.9.0"
-  },
-  "eslintConfig": {
-    "extends": "eslint-config-postcss"
   },
   "engines": {
     "node": ">=8.0.0"

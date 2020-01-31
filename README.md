@@ -19,7 +19,7 @@
 
 
 ## What problem this library solves
-The viewport height which we use as "vh" unit in css does not gives actual viewport height but gives height of brwoser window.
+The viewport height which we use as "vh" unit in css does not give the actual viewport height but gives the height of the browser window.
 
 ![](https://res.cloudinary.com/css-tricks/image/upload/c_scale,w_1000,f_auto,q_auto/v1532099222/viewport-units-mobile-crop_gxa4yw.jpg)
 

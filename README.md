@@ -1,25 +1,5 @@
 # PostCSS Viewport Height Correction
-
-[PostCSS] plugin to correct viewport height value `vh` to real viewport height as stated by CSS Tricks in article https://css-tricks.com/the-trick-to-viewport-units-on-mobile/.
-
-```css
-.foo {
-    /* Input example */
-    height: 100vh;
-}
-```
-
-```css
-.foo {
-  /* Output example */
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100); /* corrected viewport height using css custom variables */
-}
-```
-
-
-## What problem this library solves
-The viewport height which we use as "vh" unit in css does not give the actual viewport height but gives the height of the browser window.
+[PostCSS] plugin to solve the popular problem when 100vh doesn’t fit the mobile browser screen.
 
 ![](https://res.cloudinary.com/css-tricks/image/upload/c_scale,w_1000,f_auto,q_auto/v1532099222/viewport-units-mobile-crop_gxa4yw.jpg)
 
@@ -63,3 +43,21 @@ If you do not use PostCSS, add it according to [official docs]
 and set this plugin in settings.
 
 [official docs]: https://github.com/postcss/postcss#usage
+
+## Inspiration
+The viewport height which we use as "vh" unit in css does not give the actual viewport height but gives the height of the browser window. This plugin is an implememtation of [CSS Tricks article]( https://css-tricks.com/the-trick-to-viewport-units-on-mobile/) on this issue.
+
+```css
+.foo {
+    /* Input example */
+    height: 100vh;
+}
+```
+
+```css
+.foo {
+  /* Output example */
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100); /* corrected viewport height using css custom variables */
+}
+```

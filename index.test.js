@@ -11,7 +11,7 @@ async function run (input, output, opts) {
 it('changes vh', async () => {
   await run(
     'a{ height: 10vh; color: #FF10GG; }',
-    'a{ height: 10vh; color: #FF10GG; height: calc(var(--vh, 1vh) * 10); }',
+    'a{ height: 10vh; height: calc(var(--vh, 1vh) * 10); color: #FF10GG; }',
     {}
   )
 });
@@ -19,8 +19,34 @@ it('changes vh', async () => {
 it('does not have any change in priority', async () => {
   await run(
     'a{ height: 100px; height: 10vh; color: #FF10GG; }',
-    'a{ height: 100px; height: 10vh; ' +
-    'color: #FF10GG; height: calc(var(--vh, 1vh) * 10); }',
+    'a{ height: 100px; height: 10vh; height: calc(var(--vh, 1vh) * 10); ' +
+    'color: #FF10GG; }',
+    {}
+  )
+});
+
+it('does not override any following height declaration', async () => {
+  await run(
+    'a{ height: 10vh; height: 100px; }',
+    'a{ height: 10vh; height: calc(var(--vh, 1vh) * 10); height: 100px; }',
+    {}
+  )
+});
+
+it('works in another calc', async () => {
+  await run(
+    'a{ height: calc(10vh - 100px); }',
+    'a{ height: calc(10vh - 100px); ' +
+    'height: calc(calc(var(--vh, 1vh) * 10) - 100px); }',
+    {}
+  )
+});
+
+it('multiple vh in one declaration', async () => {
+  await run(
+    'a{ height: calc(10vh * 3 + 20vh);}',
+    'a{ height: calc(10vh * 3 + 20vh); ' +
+    'height: calc(calc(var(--vh, 1vh) * 10) * 3 + calc(var(--vh, 1vh) * 20));}',
     {}
   )
 });

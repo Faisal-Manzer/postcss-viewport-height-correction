@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@logux/eslint-config": "^33.0.0",
+    "@types/jest": "^25.1.4",
     "eslint": "^6.5.1",
     "eslint-config-postcss": "^3.0.7",
     "eslint-config-standard": "^14.1.0",

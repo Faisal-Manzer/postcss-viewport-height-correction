@@ -7,5 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2019-02-01
 ### Added
 - Fix for viewport height (100vh)
+## [1.0.3] - 2019-03-31
+### Fixed
+- Fixed priority bug
+- Javascript performance improvement
 
 [1.0.1]: https://www.npmjs.com/package/postcss-viewport-height-correction/v/1.0.1
+[1.0.3]: https://www.npmjs.com/package/postcss-viewport-height-correction/v/1.0.3

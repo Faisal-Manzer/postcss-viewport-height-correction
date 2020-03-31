@@ -1,13 +1,13 @@
 {
   "name": "postcss-viewport-height-correction",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "PostCSS plugin to correct viewport height value `vh` to real viewport height as stated by CSS Tricks in article https://css-tricks.com/the-trick-to-viewport-units-on-mobile/",
   "keywords": [
     "postcss",
     "css",
     "postcss-plugin",
     "viewport-height",
-    "css-ticks",
+    "css-tricks",
     "fullscreen"
   ],
   "scripts": {

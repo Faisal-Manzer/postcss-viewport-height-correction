@@ -12,13 +12,21 @@ npm install --save postcss-viewport-height-correction
 
 And then add this javascript to `public/index.html` (for React), or add to `template.html` (for Preact).
 ```js
-function setViewportProperty(){
-    var vh = document.documentElement.clientHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', vh + 'px');
+function setViewportProperty(doc) {
+  var prevClientHeight;
+  function handleResize() {
+    var clientHeight = doc.clientHeight
+    if (clientHeight === prevClientHeight) return;
+    requestAnimationFrame(function updateViewportHeight(){
+      doc.style.setProperty('--vh', (clientHeight * 0.01) + 'px');
+      prevClientHeight = clientHeight;
+    });
+  }
+  handleResize();
+  return handleResize;
 }
 
-window.addEventListener('resize', setViewportProperty);
-setViewportProperty(); // Call the fuction for initialisation
+window.addEventListener('resize', setViewportProperty(document.documentElement));
 ```
 
 [PostCSS]: https://github.com/postcss/postcss

@@ -2,8 +2,8 @@ let postcss = require('postcss');
 
 module.exports =
   postcss.plugin('postcss-viewport-height-correction', () => {
-    let finderRegex = /([0-9.]+)vh/;
-    let excludeRegex = /--vh/;
+    let finderRegex = /([0-9.]+)vh/g;
+    let excludeRegex = /var\(--vh,\s*1vh\)/;
     let replaceBy = 'calc(var(--vh, 1vh) * $1)';
 
     return function (root) {
@@ -21,10 +21,13 @@ module.exports =
 
             // Appending because we want to preserve
             // the main property for fallback
-            rule.append({
-              prop: decl.prop,
-              value: correctedViewport
-            })
+            rule.insertAfter(
+              decl,
+              {
+                prop: decl.prop,
+                value: correctedViewport
+              }
+            );
           }
         })
       })

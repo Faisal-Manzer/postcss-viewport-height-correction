@@ -12,12 +12,17 @@ module.exports =
         /* Decls are the properties inside */
         rule.walkDecls(decl => {
           let value = decl.value;
+          let important = decl.important;
 
           // Checking that declaration has `vh` and is not corrected.
           let isMatch = value.match(finderRegex) !== null;
           let isPreParsed = value.match(excludeRegex) === null;
           if (isMatch && isPreParsed) {
             let correctedViewport = value.replace(finderRegex, replaceBy);
+
+            if (important) {
+              correctedViewport += decl.raws.important || ' !important';
+            }
 
             // Appending because we want to preserve
             // the main property for fallback

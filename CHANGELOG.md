@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Fixed priority bug
 - Javascript performance improvement
+## [1.0.4] - 2019-04-09
+### Fixed
+- `!important` directive respected
 
 [1.0.1]: https://www.npmjs.com/package/postcss-viewport-height-correction/v/1.0.1
 [1.0.3]: https://www.npmjs.com/package/postcss-viewport-height-correction/v/1.0.3
+[1.0.4]: https://www.npmjs.com/package/postcss-viewport-height-correction/v/1.0.4

@@ -62,16 +62,16 @@ it('does not have any effect on parsed', async () => {
 it('does not affect !important directive', async () => {
   await run(
     'a{ ' +
-    'height: 10vh !important; ' +
-    'max-height: 20vh ! important; ' +
-    'color: #FF10GG; ' +
+    ' height: 10vh !important; ' +
+    ' max-height: 20vh ! important; ' +
+    ' color: #FF10GG; ' +
     '}',
     'a{ ' +
-    'height: 10vh !important; ' +
-    'height: calc(var(--vh, 1vh) * 10) !important; ' +
-    'max-height: 20vh ! important; ' +
-    'max-height: calc(var(--vh, 1vh) * 20) ! important; ' +
-    'color: #FF10GG; ' +
+    ' height: 10vh !important; ' +
+    ' height: calc(var(--vh, 1vh) * 10) !important; ' +
+    ' max-height: 20vh ! important; ' +
+    ' max-height: calc(var(--vh, 1vh) * 20) ! important; ' +
+    ' color: #FF10GG; ' +
     '}',
     {}
   )

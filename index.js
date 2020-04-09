@@ -12,7 +12,7 @@ module.exports =
         /* Decls are the properties inside */
         rule.walkDecls(decl => {
           let value = decl.value;
-          let important = decl.important;
+          let isImportant = decl.important;
 
           // Checking that declaration has `vh` and is not corrected.
           let isMatch = value.match(finderRegex) !== null;
@@ -20,12 +20,12 @@ module.exports =
           if (isMatch && isPreParsed) {
             let correctedViewport = value.replace(finderRegex, replaceBy);
 
-            if (important) {
+            if (isImportant) {
               correctedViewport += decl.raws.important || ' !important';
             }
 
-            // Appending because we want to preserve
-            // the main property for fallback
+            // Insert because we want to preserve
+            // the main property for fallback and its precedence
             rule.insertAfter(
               decl,
               {

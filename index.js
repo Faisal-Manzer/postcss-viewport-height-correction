@@ -1,10 +1,10 @@
 let postcss = require('postcss');
 
 module.exports =
-  postcss.plugin('postcss-viewport-height-correction', () => {
-    let finderRegex = /([0-9.]+)vh/g;
-    let excludeRegex = /var\(--vh,\s*1vh\)/;
-    let replaceBy = 'calc(var(--vh, 1vh) * $1)';
+  postcss.plugin('postcss-viewport-height-correction', ({ variableName = 'vh' }) => {
+    let finderRegex = new RegExp(`([0-9.]+)${variableName}`, 'g');
+    let excludeRegex = new RegExp(`var\(--${variableName},\s*1${variableName}\)`);
+    let replaceBy = `calc(var(--${variableName},1${variableName})*$1)`;
 
     return function (root) {
       /* Rules are the CSS Block */

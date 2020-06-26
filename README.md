@@ -17,7 +17,7 @@ var customViewportCorrectionVariable = 'vh';
 
 function setViewportProperty(doc) {
   var prevClientHeight;
-  var customVar = '--' + customViewportCorrectionVariable.toString() || 'vh';
+  var customVar = '--' + ( customViewportCorrectionVariable || 'vh' );
   function handleResize() {
     var clientHeight = doc.clientHeight;
     if (clientHeight === prevClientHeight) return;
@@ -75,7 +75,8 @@ Also change variable name in javascript you added. Change `customViewportCorrect
 - var customViewportCorrectionVariable = 'vh'
 ```
 
-> NOTE: Only use plain alphabetical characters as custom variable name. We are using regex to path viewport value any other variable can lead to unknown issues.
+> NOTE: Only use plain alphabetical characters as custom variable name.
+> We are using regex to patch viewport value, any variable with special characters can lead to unknown issues.
 
 ## Inspiration
 The viewport height which we use as "vh" unit in css does not give the actual viewport height but gives the height of the browser window. This plugin is an implememtation of [CSS Tricks article]( https://css-tricks.com/the-trick-to-viewport-units-on-mobile/) on this issue.

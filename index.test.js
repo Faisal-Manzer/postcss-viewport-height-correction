@@ -76,3 +76,29 @@ it('does not affect !important directive', async () => {
     {}
   )
 });
+
+it('custom variable conf', async () => {
+  await run(
+    'a{ height: 10vh; color: #FF10GG; }',
+    'a{ height: 10vh; height: calc(var(--uu, 1vh) * 10); color: #FF10GG; }',
+    { variable: 'uu' }
+  )
+});
+
+it('does not affect !important directive with custom variable', async () => {
+  await run(
+    'a{ ' +
+    ' height: 10vh !important; ' +
+    ' max-height: 20vh ! important; ' +
+    ' color: #FF10GG; ' +
+    '}',
+    'a{ ' +
+    ' height: 10vh !important; ' +
+    ' height: calc(var(--someVariablePoints, 1vh) * 10) !important; ' +
+    ' max-height: 20vh ! important; ' +
+    ' max-height: calc(var(--someVariablePoints, 1vh) * 20) ! important; ' +
+    ' color: #FF10GG; ' +
+    '}',
+    { variable: 'someVariablePoints' }
+  )
+});

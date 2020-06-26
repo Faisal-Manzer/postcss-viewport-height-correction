@@ -12,20 +12,23 @@ npm install --save postcss-viewport-height-correction
 
 And then add this javascript to `public/index.html` (for React), or add to `template.html` (for Preact).
 ```js
+var customViewportCorrectionVariable = 'vh';
+
+
 function setViewportProperty(doc) {
   var prevClientHeight;
+  var customVar = '--' + customViewportCorrectionVariable.toString() || 'vh';
   function handleResize() {
-    var clientHeight = doc.clientHeight
+    var clientHeight = doc.clientHeight;
     if (clientHeight === prevClientHeight) return;
     requestAnimationFrame(function updateViewportHeight(){
-      doc.style.setProperty('--vh', (clientHeight * 0.01) + 'px');
+      doc.style.setProperty(customVar, (clientHeight * 0.01) + 'px');
       prevClientHeight = clientHeight;
     });
   }
   handleResize();
   return handleResize;
 }
-
 window.addEventListener('resize', setViewportProperty(document.documentElement));
 ```
 
@@ -52,9 +55,32 @@ and set this plugin in settings.
 
 [official docs]: https://github.com/postcss/postcss#usage
 
+## Configuration
+You really will rarely need this. Use this when you have some conflicting css variable.
+We use `--vh` as variable to fix the viewport height. You can use `--pvh` or any other variable of your choice.
+
+Configure postcss to use your variable.
+```diff
+module.exports = {
+  plugins: [
++   require('postcss-viewport-height-correction')({ variable: 'pvh' }),
+    require('autoprefixer')
+  ]
+}
+```
+
+Also change variable name in javascript you added. Change `customViewportCorrectionVariable` value to your variable.
+```diff
++ var customViewportCorrectionVariable = 'pvh'
+- var customViewportCorrectionVariable = 'vh'
+```
+
+> NOTE: Only use plain alphabetical characters as custom variable name. We are using regex to path viewport value any other variable can lead to unknown issues.
+
 ## Inspiration
 The viewport height which we use as "vh" unit in css does not give the actual viewport height but gives the height of the browser window. This plugin is an implememtation of [CSS Tricks article]( https://css-tricks.com/the-trick-to-viewport-units-on-mobile/) on this issue.
 
+## Example Output
 ```css
 .foo {
     /* Input example */

@@ -4,3 +4,4 @@ yarn.lock
 *.test.js
 .travis.yml
 .editorconfig
+.github

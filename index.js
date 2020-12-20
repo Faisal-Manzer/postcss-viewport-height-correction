@@ -4,7 +4,7 @@ module.exports =
   postcss.plugin(
     'postcss-viewport-height-correction',
     ({ variable = 'vh' } = {}) => {
-      let finderRegex = /([0-9.]+)vh/g;
+      let finderRegex = /(-?[0-9.]+)vh/g;
       // eslint-disable-next-line security/detect-non-literal-regexp
       let excludeRegex = new RegExp(
         `var\\(--${ variable },\\s*1vh\\)`

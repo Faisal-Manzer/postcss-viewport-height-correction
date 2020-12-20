@@ -16,6 +16,14 @@ it('changes vh', async () => {
   )
 });
 
+it('changes negative vh', async () => {
+  await run(
+    'a{ height: -10vh; color: #FF10GG; }',
+    'a{ height: -10vh; height: calc(var(--vh, 1vh) * -10); color: #FF10GG; }',
+    {}
+  )
+});
+
 it('does not have any change in priority', async () => {
   await run(
     'a{ height: 100px; height: 10vh; color: #FF10GG; }',
@@ -38,6 +46,15 @@ it('works in another calc', async () => {
     'a{ height: calc(10vh - 100px); }',
     'a{ height: calc(10vh - 100px); ' +
     'height: calc(calc(var(--vh, 1vh) * 10) - 100px); }',
+    {}
+  )
+});
+
+it('works in another calc with negative numbers', async () => {
+  await run(
+    'a{ height: calc(-10vh - 100px); }',
+    'a{ height: calc(-10vh - 100px); ' +
+    'height: calc(calc(var(--vh, 1vh) * -10) - 100px); }',
     {}
   )
 });

@@ -56,7 +56,7 @@ and set this plugin in settings.
 [official docs]: https://github.com/postcss/postcss#usage
 
 ## Configuration
-You really will rarely need this. Use this when you have some conflicting css variable.
+**You really will rarely need this.** Use this when you have some conflicting css variable.
 We use `--vh` as variable to fix the viewport height. You can use `--pvh` or any other variable of your choice.
 
 Configure postcss to use your variable.
@@ -87,6 +87,12 @@ The viewport height which we use as "vh" unit in css does not give the actual vi
     /* Input example */
     height: 100vh;
 }
+
+.bar {
+    min-height: 50vh;
+    max-height: 75vh;
+    margin: -1vh;
+}
 ```
 
 ```css
@@ -94,5 +100,11 @@ The viewport height which we use as "vh" unit in css does not give the actual vi
   /* Output example */
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100); /* corrected viewport height using css custom variables */
+}
+
+.bar {
+      min-height: calc(var(--vh, 1vh) * 50);
+      max-height: calc(var(--vh, 1vh) * 75);
+      margin: calc(var(--vh, 1vh) * -1);
 }
 ```

@@ -1,8 +1,9 @@
 {
-  "extends": [
-    "eslint-config-postcss"
-  ],
+  "extends": ["eslint-config-postcss"],
   "rules": {
     "semi": "off"
+  },
+  "env": {
+    "jest": true
   }
 }

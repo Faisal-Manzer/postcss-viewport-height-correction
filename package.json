@@ -16,25 +16,27 @@
   "author": "Faisal Manzer <faisal_manzer@yahoo.in>",
   "license": "MIT",
   "repository": "Faisal-Manzer/postcss-viewport-height-correction",
-  "dependencies": {
-    "postcss": "^7.0.18"
-  },
   "devDependencies": {
-    "@logux/eslint-config": "^33.0.0",
-    "@types/jest": "^25.1.4",
-    "eslint": "^6.5.1",
-    "eslint-config-postcss": "^3.0.7",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-es5": "^1.4.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.19.0",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-prefer-let": "^1.0.1",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^12.1.0",
-    "jest": "^24.9.0"
+    "@logux/eslint-config": "^49.0.0",
+    "@types/jest": "^29.5.0",
+    "eslint": "^8.38.0",
+    "eslint-config-postcss": "^4.0.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-es5": "^1.5.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-n": "latest",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prefer-let": "^3.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-security": "^1.7.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "eslint-plugin-unicorn": "^46.0.0",
+    "jest": "^29.5.0",
+    "postcss": "^8.4.22"
+  },
+  "peerDependencies": {
+    "postcss": "^8.4.22"
   },
   "engines": {
     "node": ">=8.0.0"
